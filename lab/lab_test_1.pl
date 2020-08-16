@@ -25,3 +25,23 @@ tape(3,beatles,abbey_road,something).
 tape(4,rolling_stones,sticky_fingers,brown_sugar).
 tape(5,eagles,hotel_california,new_kid_in_town).
 % query tape(3,Artist,Album,Fave_Song).
+
+% Rules
+mortal(X) :-
+    human(X).
+human(reza).
+human(hasib).
+human(daud).
+
+
+fun(X) :-
+    bike(X),
+    car(X).
+fun(X) :-
+    blue(X),
+    red(X).
+bike(ducati).   %Sub rules all values must be same to satisfy main rule.
+car(ducati).
+blue(color).
+red(color).
+fun(ice_cream).
