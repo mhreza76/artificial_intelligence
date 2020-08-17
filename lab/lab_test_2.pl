@@ -32,3 +32,22 @@ birthday(hasib).
 birthday(daud).
 happy(reza).
 happy(alexa).
+
+
+a(X):-
+    b(X),
+    c(X),
+    d(X).
+a(X):-
+    c(X),
+    d(X).
+a(X):-
+    d(X).
+b(a).
+b(1).
+b(2).
+b(3).
+c(3).
+c(4).
+d(10).
+d(11).
