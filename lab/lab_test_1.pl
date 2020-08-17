@@ -44,4 +44,4 @@ bike(ducati).   %Sub rules all values must be same to satisfy main rule.
 car(ducati).
 blue(color).
 red(color).
-fun(ice_cream).
+# % fun(ice_cream).
