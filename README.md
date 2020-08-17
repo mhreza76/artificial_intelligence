@@ -2,7 +2,7 @@
 AI_course
 Prolog is a logic language that is particularly suited to programs that involve symbolic or non-numeric computation.
 For this reason, it is a frequently used language in Artificial Intelligence where manipulation of symbols and inference about them is a common task.
-#Simple Facts
+# Simple Facts
 In Prolog we can make some statements by using facts. Facts either consist of a particular item or a relation between items. For example we can represent the fact that it is sunny by writing the program:
 sunny.
 We can now ask a query of Prolog by asking
