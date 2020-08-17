@@ -330,7 +330,7 @@ We can also ask our program to find fun items for us. To do this we can pose the
 ?- fun(What).
 ```
 To which Prolog will reply 
-#### To see multiple answers press "Spacebar"
+#### To see multiple answers press "spacebar or semicolon"
 ```prolog
 What=vw_beatle,
 What=ford_escort,
@@ -387,7 +387,7 @@ What = pears ;
 What = t_bone_steak ;
 What = apples.
 ```
-#### to see multiple answers we have to press "spacebar"
+#### to see multiple answers we have to press "spacebar or semicolon"
 
 # Backtracking in Rules
 We can also have backtracking in rules. For example consider the following program.
