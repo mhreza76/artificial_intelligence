@@ -442,37 +442,51 @@ We first attempt to prove something is fun. To do this we have two clauses of fu
 Using the first clause, we can now look to see if we can find some red object
 
 First let's retrieve a red object from the red database
+
+```prolog
 /* database of red items */
 red(apple_1).      first choice
 red(block_1).
 red(car_27).
+```
 
 The first red item that we find is apple_1. This gives us the instantiation X=apple_1. Next we have to see if this is a car, so we ask the question car(apple_1). Does this match with our existing database of facts about cars?
 
+```prolog
 /* database of cars */
 car(desoto_48).
 car(edsel_57).
+```
+
 The answers is that it will not. apple_1 will not match with desoto_48 or with edsel_57. So what do we do next? In such cases, Prolog backtracks in order to find another solution. Thus we go back to the red database, and see if we can find another possible solution. In this case we can
 
+```prolog
 red(apple_1).  
 red(block_1).      second choice
 red(car_27).
+```
 
 We can use the next clause and see if block_1 is a red car.
 
 Returning to our cars database, again block_1 will not match against desoto_48 or with edsel_57. In this case we must backtrack a second time to see if there is another red item that we can find. This time we find the third clause in the database, and use that.
 
+```prolog
 red(apple_1).    
 red(block_1).
 red(car_27).     third choice 
+```
 
 We now attempt the car goal again, but this time for car_27. Now recall what we said earlier about the dangers of over estimating the powers of Prolog. Prolog will try to match the goal car(car_27) against the database
 
+```prolog
 car(desoto_48).
 car(edsel_57).
+```
 
 This will fail. car_27 does not match with either desoto_48 or edsel_57. Although the programmer probably meant car_27 to mean car number 27 to be a car, Prolog has no way of gleaning this intended semantics, and fails the call based on a simple pattern match.
 Well, what do we do now. The first step is to go back and see if there are any more possible red items. Well we have now exhausted all three choices, hence there are no more red items to choose from. Given that there are no more possible ways that we could satisfy clause 1, we now more on to clause 2, as we see on the next card.
 
 #### we checked first clause have no matching between red car. now prolog will start finding matches between blue bike (as like as first clause).
+
+
 
