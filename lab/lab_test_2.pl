@@ -1,0 +1,21 @@
+fun_a(X) :-
+    red_a(X),
+    car_a(X).
+fun_b(X) :-
+    blue_a(X),
+    bike_a(X).
+% car(vw_beatle).
+car_a(ford_escort).
+bike_a(harley_davidson).
+% red(vw_beatle).
+red_a(ford_escort).
+blue_a(harley_davidson).
+    
+likes(Person1,Person2):-
+    hobby(Person1,Hobby),
+    hobby(Person2,Hobby).
+hobby(john,fishing).
+hobby(tom,fishing).
+hobby(reza,travelling).
+hobby(niloy,travelling).
+hobby(munny,photography).

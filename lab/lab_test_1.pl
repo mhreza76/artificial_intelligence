@@ -34,14 +34,15 @@ human(hasib).
 human(daud).
 
 
-fun(X) :-
-    bike(X),
-    car(X).
-fun(X) :-
-    blue(X),
-    red(X).
+fun(Y) :-
+    red(Y),
+    car(Y).
+fun(Y) :-
+    blue(Y),
+    bike(Y).
+fun(ice_cream).
+red(ford).
+car(ford).
 bike(ducati).   %Sub rules all values must be same to satisfy main rule.
-car(ducati).
-blue(color).
-red(color).
-# % fun(ice_cream).
+blue(ducati).
+

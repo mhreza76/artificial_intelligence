@@ -25,14 +25,14 @@ peter_footballer.                      /* peter plays football */
 
 These describe a particular set of circumstances for some character john. We can interrogate this database of facts, by again posing a query. For example: {note the responses of the Prolog interpreter are shown in italics}
 
-### quearies
+### queries
 ```prolog
 ?-john_Forgot_His_Raincoat.
-yes
+true
 ?- raining.
-yes
+true
 ?- foggy.
-no
+false
 ```
 
 The first two queries succeed since they can be matched against facts in the database above. However, foggy fails (since it cannot be matches) and Prolog answers no since we have not told it this fact.
@@ -45,7 +45,7 @@ blue_circle.
 orange_triangle.
 ```
 Again indicate whether you think the goal will succeed or not by answering yes or no as prompted.
-### quearies
+### queries
 ```prolog
 ?-green_circle.
 ?-circle_green.
@@ -78,24 +78,24 @@ eats(john,apples).                            /* "John eats apples" */
 
 eats(john,grapefruit).                        /* "John eats grapefruit" */
 ```
-#### If we now ask some queries we would get the following interaction:
-### quearies
+#### If we falsew ask some queries we would get the following interaction:
+### queries
 ```prolog
 ?- eats(fred,oranges).         /* does this match anything in the database? */
 
-yes                           /* yes, matches the first clause in the database */
+true                           /* true, matches the first clause in the database */
 
 ?- eats(john,apples).          /*  do we have a fact that says john eats apples? */
 
-yes                            /* yes we do, clause 4 of our eats database */
+true                            /* yes we do, clause 4 of our eats database */
 
 ?- eats(mike,apples).          /* how about this query, does mike eat apples 
 
-no                             /* not according to the above database. */
+false                             /* falset according to the above database. */
 
 ?- eats(fred,apples).          /* does fred eat apples */
 
-no                            /* again no, we don't know whether fred eats apples */
+false                            /* again no, we don't know whether fred eats apples */
 ```
 
 # Facts with Arguments Examples 2
@@ -113,22 +113,22 @@ age(ian,2).                   /*  Ian is 2 */
 age(thomas,25).               /*  Thomas is 25 */
 ```
 
-#### If we now ask some queries we would get the following interaction:
-### quearies
+#### If we falsew ask some queries we would get the following interaction:
+### queries
 ```prolog
 ?- age(ian,2).           /* is Ian 2 years old? */
 
-yes                      /* yes, matches against the fourth clause of age */
+true                      /* yes, matches against the fourth clause of age */
 
 ?-agnes(41).            /* for some relation agnes are they 41  */
 
-no                       /* No.   In the database above we only know about the relation */ 
+false                       /* No.   In the database above we only know about the relation */ 
 
                          /*  age, not about the relation agnes, so the query fails */
 
 ?- age(ian,two)          /* is Ian  two years old? */
 
-no                      /* No.  two and 2 are not the same and therefore don't match */
+false                      /* No.  two and 2 are not the same and therefore don't match */
 
 ```
 
@@ -155,7 +155,7 @@ Thus returning to our first question we can find out what fred eats by typing
 
 What=mangoes
 
-yes
+true
 ```
 As a result of this query, the variable What has matched (or unified) with mangoes. We say that the variable What now has the binding mangoes. When we pose a query, if the query is successful, Prolog prints both the variable and the variable name, as we see above.
 
@@ -167,23 +167,23 @@ loves(fred,hobbies).
 ```
 
 #### Now let's look at some simple queries using variables
-### quearies
+### queries
 ```prolog
 ?- loves(john,Who).      /* Who does john love? */
 
 Who=mary                 /* yes , Who gets bound to mary */
 
-yes                      /*  and the query succeeds*/
+true                      /*  and the query succeeds*/
 
 ?- loves(arnold,Who)     /* does arnold love anybody */
 
-no                       /* no,  arnold doesn't match john or fred */
+false                       /* no,  arnold doesn't match john or fred */
 
 ?- loves(fred,Who).      /* Who does fred love */
 
 Who = hobbies            /*  Note the to Prolog Who is just the name of a variable, it */
 
-yes                      /* semantic connotations are not picked up, hence  Who unifies */
+true                      /* semantic connotations are not picked up, hence  Who unifies */
 
                          /* with hobbies */
 
@@ -213,13 +213,11 @@ Album=hotel_california
 
 Fave_Song=new_kid_in_town
 
-yes
+true
 
 ?- tape(4,rolling_stones,sticky_fingers,Song).  /* find just  song */
 
 Song=brown_sugar                        /* which you like best from the album */
-
-yes      
 ```
 
 # Rules
@@ -237,7 +235,7 @@ The clause can be read in two ways (called either a declarative or a procedural 
 To continue our previous example, lets us define the fact 'Reza is human' so that our program now looks as follows:
 ```prolog
 mortal(X) :-
-human(X).
+        human(X).
 human(reza).
 ```
 #### If we now pose the question to Prolog
@@ -246,8 +244,125 @@ human(reza).
 ?- mortal(reza).
 ```
 The Prolog interpreter would respond as follows:
-yes
+true
 
-Why was this? Well in order to solve the query ?- mortal(reza)., we used the rule we saw previously. This said that in order to prove someone mortal, we had to prove them to be human. Thus from the goal Prolog generates the subgoal of showing human(socrates).
+Why was this? Well in order to sFolve the query ?- mortal(reza)., we used the rule we saw previously. This said that in order to prove someone mortal, we had to prove them to be human. Thus from the goal Prolog generates the subgoal of showing human(reza).
 In the above example we were able to match human(reza) against the database described at the top of this card. In Prolog we say that the subgoal succeeded, and as a result the overall goal succeeded. We know when this happens because Prolog prints yes.
+
+# Rules 3:
+We can also use variables within queries. For example, we might wish to see if there is somebody who is mortal. This is done by the following line.
+### query
+```prolog
+?- mortal(P).
+```
+The Prolog interpreter responds.
+```prolog
+P = socrates
+```
+This means that Prolog was able to prove the goal by binding the variable P to reza. This was done by again proving someone was mortal by proving the subgoal that they were human. Prolog thus asked if there was any P that was human. This matches against the clause human(reza) thereby binding P to reza. This binding is then passed back to the parent goal, and the results in the printout we saw above.
+
+# Rules 4
+
+Sometimes we may wish to specify alternative ways of proving a particular thing. This we can do by using different rules and facts with the same name. For example, we can represent the sentence 'Something is fun if its a red car or a blue bike or it is ice cream' as follows:
+
+```prolog
+fun(X) :-                      /* an item is fun if */ 
+
+        red(X),                /* the item is red */
+
+        car(X).                /* and it is a car */
+
+fun(X) :-                      /*  or an item is fun if */
+
+        blue(X),               /* the item is blue */
+
+        bike(X).               /* and it is a bike */
+
+fun(ice_cream).                /* and ice cream is also fun. */
+
+```
+This program says that we have three ways of finding out if something is fun. Something is fun if it is a red and a car or blue and a bike, or if it is ice cream. These three options are represent in Prolog by three clauses of the predicate fun. Just like we saw for pure facts, Prolog will start from the first clause (beit a rule or fact) of fun and try that. If that does not succeed, we try the next clause. We only fail when we run out of rules or facts to try.
+
+### Examples 1
+```prolog
+fun(X) :-
+        red(X),
+        car(X).
+fun(X) :-
+        blue(X),
+        bike(X).
+car(vw_beatle).
+car(ford_escort).
+bike(harley_davidson).
+red(vw_beatle).
+red(ford_escort).
+blue(harley_davidson).
+```
+Above is both our previous program for finding fun items and facts describing some red and blue items and some cars and bikes. Let's now use the above program and see if a harley_davidson is fun. To do this we can ask Prolog the following question.
+
+### query
+```prolog
+?- fun(harley_davidson).                  /* to which Prolog will reply */
+
+true                                     /* to show the program succeeded */
+```
+To execute this query, Prolog will first see if harley_davidson is red, however only vw_beatles and ford_escorts are defined as being red. Hence the query red(harley_davidson) will fail. This means that the first clause of fun will fail. As a result, we now try the second clause of fun. This will mean that we will attempt the subgoals blue(harley_davidson) and bike(harley_davidson). Both these goals match facts in the database. As a result fun succeeds as we saw above.
+
+# Examples 2
+```prolog
+fun(X) :-
+        red(X),
+        car(X).
+fun(X) :-
+        blue(X),
+        bike(X).
+car(vw_beatle).
+car(ford_escort).
+bike(harley_davidson).
+red(vw_beatle).
+red(ford_escort).
+blue(harley_davidson).
+```
+We can also ask our program to find fun items for us. To do this we can pose the following question.
+### query
+```prolog
+
+?- fun(What).
+```
+To which Prolog will reply 
+#### To see multiple answers press "Spacebar"
+```prolog
+What=vw_beatle,
+What=ford_escort,
+What=harley_davidson.
+```
+
+```prolog
+likes(Person1,Person2):-
+    hobby(Person1,Hobby),
+    hobby(Person2,Hobby).
+hobby(john,fishing).
+hobby(tom,fishing).
+hobby(reza,travelling).
+hobby(niloy,travelling).
+hobby(munny,photography).
+```
+### querys
+```prolog
+?- likes(john,tom).
+true
+
+?- likes(john,reza).
+false
+
+?- likes(john,W)
+W = john ;
+W = tom.
+
+?- hobby(W,fishing).
+W = john ;
+W = tom
+```
+
+#### We used Person1 and Person2 as a veriable, likes will be true when two persons hobby will be same.
 
