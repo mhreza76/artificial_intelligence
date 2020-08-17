@@ -11,3 +11,14 @@ We can now ask a query of Prolog by asking
 Facts have some simple rules of syntax. Facts should always begin with a lowercase letter and end with a full stop.
 The facts themselves can consist of any letter or number combination, as well as the underscore _ character.
 However, names containing the characters -,+,*,/, or other mathematical operators should be avoided.
+# Examples of Simple Facts
+
+Here are some simple facts about an imaginary world. /* and */ are comment delimiters.
+
+```prolog
+john_is_cold.                          /* john is cold */
+raining.                               /* it is raining */
+john_Forgot_His_Raincoat.              /*  john forgot his raincoat */
+fred_lost_his_car_keys.                /* fred lost is car keys */
+peter_footballer.                      /* peter plays football */
+```
