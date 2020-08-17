@@ -24,7 +24,8 @@ peter_footballer.                      /* peter plays football */
 ```
 
 These describe a particular set of circumstances for some character john. We can interrogate this database of facts, by again posing a query. For example: {note the responses of the Prolog interpreter are shown in italics}
-####query
+
+#### query
 ```prolog
 ?-john_Forgot_His_Raincoat.
 yes
@@ -32,4 +33,22 @@ yes
 yes
 ?- foggy.
 no
+```
+
+The first two queries succeed since they can be matched against facts in the database above. However, foggy fails (since it cannot be matches) and Prolog answers no since we have not told it this fact.
+# Simple Fact Exercises
+```prolog
+blue_box.
+red_box.
+green_circle.
+blue_circle.
+orange_triangle.
+```
+Again indicate whether you think the goal will succeed or not by answering yes or no as prompted.
+#### query
+?-green_circle.
+?-circle_green.
+?-red_triangle.
+?-red_box.
+?-orange_Triangle.
 ```
