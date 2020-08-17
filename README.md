@@ -140,7 +140,7 @@ eats(fred,mangoes).
 ```
 How do we ask what fredeats. We could type in something like
 ### queary
-``prolog
+```prolog
 ?- eats(fred,what).
 ```
 However Prolog will say no. The reason for this is that what does not match with mangoes. In order to match arguments in this way we must use a Variable. The process of matching items with variables is known as unification. Variables are distinguished by starting with a capital letter. Here are some examples:
@@ -250,3 +250,4 @@ yes
 
 Why was this? Well in order to solve the query ?- mortal(reza)., we used the rule we saw previously. This said that in order to prove someone mortal, we had to prove them to be human. Thus from the goal Prolog generates the subgoal of showing human(socrates).
 In the above example we were able to match human(reza) against the database described at the top of this card. In Prolog we say that the subgoal succeeded, and as a result the overall goal succeeded. We know when this happens because Prolog prints yes.
+
