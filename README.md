@@ -488,5 +488,34 @@ Well, what do we do now. The first step is to go back and see if there are any m
 
 #### we checked first clause have no matching between red car. now prolog will start finding matches between blue bike (as like as first clause).
 
-
+## Exercise
+```prolog
+a(X):-
+    b(X),
+    c(X),
+    d(X).
+a(X):-
+    c(X),
+    d(X).
+a(X):-
+    d(X).
+b(a).
+b(1).
+b(2).
+b(3).
+c(3).
+c(4).
+d(10).
+d(11).
+```
+### query
+```prolog
+?- a(X).
+```
+### output
+```prolog
+X = 10 ;
+X = 11.
+```
+#### only 3rd clause fullfill the condition.
 
