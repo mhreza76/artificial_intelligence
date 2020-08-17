@@ -22,3 +22,14 @@ john_Forgot_His_Raincoat.              /*  john forgot his raincoat */
 fred_lost_his_car_keys.                /* fred lost is car keys */
 peter_footballer.                      /* peter plays football */
 ```
+
+These describe a particular set of circumstances for some character john. We can interrogate this database of facts, by again posing a query. For example: {note the responses of the Prolog interpreter are shown in italics}
+####query
+```prolog
+?-john_Forgot_His_Raincoat.
+yes
+?- raining.
+yes
+?- foggy.
+no
+```
