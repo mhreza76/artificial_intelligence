@@ -19,3 +19,16 @@ hobby(tom,fishing).
 hobby(reza,travelling).
 hobby(niloy,travelling).
 hobby(munny,photography).
+
+eats(fred,pears).
+eats(fred,t_bone_steak).
+eats(fred,apples).
+
+hold_party(X):-
+    birthday(X),
+    happy(X).
+birthday(reza).
+birthday(hasib).
+birthday(daud).
+happy(reza).
+happy(alexa).
